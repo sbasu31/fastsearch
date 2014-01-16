@@ -2,6 +2,7 @@ package com.loganalyzer.config.interfaces;
 
 import com.loganalyzer.common.models.SearchContent;
 import com.loganalyzer.common.models.SearchInput;
+import com.loganalyzer.outputs.IOutputRepository;
 import com.loganalyzer.outputs.IReportGenerator;
 import com.loganalyzer.services.ISearcher;
 
