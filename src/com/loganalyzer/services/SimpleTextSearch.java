@@ -15,6 +15,14 @@ public class SimpleTextSearch implements ISearcher {
 	private SearchContent searchContent;
 	private SearchEngineData searchEngineData;
 
+	public SimpleTextSearch(SearchInput searchInput, SearchContent content) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public SimpleTextSearch() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setSearchInput(SearchInput input) {
 		// TODO Auto-generated method stub

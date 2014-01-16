@@ -1,6 +1,8 @@
 package com.loganalyzer.common.models;
 
 import com.loganalyzer.common.enums.DataTypeSearch;
+import com.loganalyzer.common.enums.FilePrefix;
+import com.loganalyzer.common.enums.OutputFileFormat;
 import com.loganalyzer.common.enums.SearchArea;
 import com.loganalyzer.common.enums.SearchRangeType;
 import com.loganalyzer.common.enums.SearchType;
@@ -11,6 +13,27 @@ public class SearchInput
 	private String searchString;
 	private String searchRangeStart;
 	private String searchRangeEnd;
+	private String outputFileLocation;
+	private FilePrefix prefixType;
+	private OutputFileFormat fileFormat;
+	public String getOutputFileLocation() {
+		return outputFileLocation;
+	}
+	public void setOutputFileLocation(String outputFileLocation) {
+		this.outputFileLocation = outputFileLocation;
+	}
+	public FilePrefix getPrefixType() {
+		return prefixType;
+	}
+	public void setPrefixType(FilePrefix prefixType) {
+		this.prefixType = prefixType;
+	}
+	public OutputFileFormat getFileFormat() {
+		return fileFormat;
+	}
+	public void setFileFormat(OutputFileFormat fileFormat) {
+		this.fileFormat = fileFormat;
+	}
 	public String getSearchRangeStart()
    {
       return searchRangeStart;

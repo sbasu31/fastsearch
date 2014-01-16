@@ -25,6 +25,7 @@ public class TestSearchWithNoConsole
       searchService.setSearchInput(input);
       searchService.setSearchEngineData(new SearchEngineData());
       searchService.search();
+      
       System.out.println(searchService.getSearchEngineData().getData().size());
    }
 
