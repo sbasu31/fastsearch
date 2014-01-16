@@ -66,6 +66,7 @@ public class SimpleTextSearch implements ISearcher {
 						data.add(new StringBuilder("[Line " +lineNo+"]"+line));
 					}
 				}
+				
 				scanner.close();
 				
 			} catch (FileNotFoundException e) {
