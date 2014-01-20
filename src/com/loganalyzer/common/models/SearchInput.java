@@ -12,6 +12,103 @@ import com.loganalyzer.common.enums.SearchType;
 
 public class SearchInput
 {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((dataTypeSearch == null) ? 0 : dataTypeSearch.hashCode());
+		result = prime * result
+				+ ((fileFormat == null) ? 0 : fileFormat.hashCode());
+		result = prime * result
+				+ ((fileList == null) ? 0 : fileList.hashCode());
+		result = prime
+				* result
+				+ ((outputFileLocation == null) ? 0 : outputFileLocation
+						.hashCode());
+		result = prime * result
+				+ ((prefixType == null) ? 0 : prefixType.hashCode());
+		result = prime * result
+				+ ((searchArea == null) ? 0 : searchArea.hashCode());
+		result = prime
+				* result
+				+ ((searchAreaRangeEnd == null) ? 0 : searchAreaRangeEnd
+						.hashCode());
+		result = prime
+				* result
+				+ ((searchAreaRangeStart == null) ? 0 : searchAreaRangeStart
+						.hashCode());
+		result = prime * result
+				+ ((searchRangeEnd == null) ? 0 : searchRangeEnd.hashCode());
+		result = prime
+				* result
+				+ ((searchRangeStart == null) ? 0 : searchRangeStart.hashCode());
+		result = prime * result
+				+ ((searchRangeType == null) ? 0 : searchRangeType.hashCode());
+		result = prime * result
+				+ ((searchString == null) ? 0 : searchString.hashCode());
+		result = prime * result
+				+ ((searchType == null) ? 0 : searchType.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SearchInput other = (SearchInput) obj;
+		if (dataTypeSearch != other.dataTypeSearch)
+			return false;
+		if (fileFormat != other.fileFormat)
+			return false;
+		if (fileList == null) {
+			if (other.fileList != null)
+				return false;
+		} else if (!fileList.equals(other.fileList))
+			return false;
+		if (outputFileLocation == null) {
+			if (other.outputFileLocation != null)
+				return false;
+		} else if (!outputFileLocation.equals(other.outputFileLocation))
+			return false;
+		if (prefixType != other.prefixType)
+			return false;
+		if (searchArea != other.searchArea)
+			return false;
+		if (searchAreaRangeEnd == null) {
+			if (other.searchAreaRangeEnd != null)
+				return false;
+		} else if (!searchAreaRangeEnd.equals(other.searchAreaRangeEnd))
+			return false;
+		if (searchAreaRangeStart == null) {
+			if (other.searchAreaRangeStart != null)
+				return false;
+		} else if (!searchAreaRangeStart.equals(other.searchAreaRangeStart))
+			return false;
+		if (searchRangeEnd == null) {
+			if (other.searchRangeEnd != null)
+				return false;
+		} else if (!searchRangeEnd.equals(other.searchRangeEnd))
+			return false;
+		if (searchRangeStart == null) {
+			if (other.searchRangeStart != null)
+				return false;
+		} else if (!searchRangeStart.equals(other.searchRangeStart))
+			return false;
+		if (searchRangeType != other.searchRangeType)
+			return false;
+		if (searchString == null) {
+			if (other.searchString != null)
+				return false;
+		} else if (!searchString.equals(other.searchString))
+			return false;
+		if (searchType != other.searchType)
+			return false;
+		return true;
+	}
 	private SearchType searchType;
 	private String searchString;
 	private String searchRangeStart;

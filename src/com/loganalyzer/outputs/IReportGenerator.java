@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.loganalyzer.common.models.OutputConfig;
+import com.loganalyzer.common.models.SearchEngineData;
 import com.loganalyzer.common.models.SearchInput;
 
 public interface IReportGenerator {
@@ -11,7 +12,7 @@ public interface IReportGenerator {
 
 	public void setFooter(String footer) throws Exception;
 
-	public void setContent(Map<SearchInput, List<String>> outputData)
+	public void setContent(List<SearchEngineData>outputData)
 			throws Exception;
 	public void setOutputConfig(OutputConfig outputConfig);
 	public void generatereport() throws Exception;

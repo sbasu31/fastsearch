@@ -1,5 +1,9 @@
 package com.test;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.loganalyzer.common.enums.DataTypeSearch;
 import com.loganalyzer.common.enums.SearchArea;
 import com.loganalyzer.common.enums.SearchType;
@@ -24,10 +28,15 @@ public class TestSearchWithNoConsole
       input.setSearchString("Property Ignored");
       
       input.getFileList().add("C:\\Users\\shrutib\\Desktop\\logs\\profiles.hostprofiles.update.txt");
+     
       ISearcher searchService = new SimpleTextSearch();
 //      searchService.setSearchContent(searchContent);
       searchService.setSearchInput(input);
       searchService.search();
+      
+      List<SearchEngineData>seDataList = searchService.getSearchEngineDataList();
+      Map<SearchInput,List<SearchEngineData>> searchResult = new HashMap<SearchInput,List<SearchEngineData>>();
+      searchResult.put(input,searchService.getSearchEngineDataList());
       
       
    }
