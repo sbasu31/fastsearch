@@ -8,6 +8,7 @@ import com.loganalyzer.common.models.SearchEngineData;
 import com.loganalyzer.common.models.SearchInput;
 import com.loganalyzer.outputs.IOutputRepository;
 import com.loganalyzer.outputs.IReportGenerator;
+import com.loganalyzer.outputs.TextfileGenerator;
 import com.loganalyzer.services.ISearcher;
 import com.loganalyzer.services.RangeSearch;
 import com.loganalyzer.services.SimpleTextSearch;
@@ -18,37 +19,38 @@ public class ConfigurationBuilder implements IConfiguration {
 	
 
 	@Override
-	public void buildConfig(SearchInput searchInput, SearchContent content) {
-		buildSearchEngine(searchInput,content);
+	public void buildConfig(SearchInput searchInput) {
+		buildSearchEngine(searchInput);
 		if(isSearchInputForSimpleSearch(searchInput)){
-			searchEngine = new SimpleTextSearch(searchInput,content);
-			searchEngine.setSearchEngineData(new SearchEngineData());
+			searchEngine = new SimpleTextSearch(searchInput);
 		}
 		else if(isSearchInputForRangeSearch(searchInput)){
-			searchEngine = new RangeSearch(searchInput,content);
-			searchEngine.setSearchEngineData(new SearchEngineData());
+			searchEngine = new RangeSearch(searchInput);
 		}
 		OutputConfig outputConfig = buildOutputConfig(searchInput);
-		buildReportGenerator(searchInput,content);
+		buildReportGenerator(searchInput,outputConfig);
 		
 	}
 
 	private void buildReportGenerator(SearchInput searchInput,
-			SearchContent content) {
+			OutputConfig outputConfig) {
 		// TODO Auto-generated method stub
+		if(searchInput.getFileFormat().equals(OutputFileFormat.TEXTFILE)){
+			reportGenerator = new TextfileGenerator();
+			reportGenerator.setOutputConfig(outputConfig);
+			reportGenerator.setSearchInput(searchInput);
+		}
 		
 	}
 
-	private void buildSearchEngine(SearchInput searchInput,
-			SearchContent content) {
+	private void buildSearchEngine(SearchInput searchInput
+			) {
 		if(isSearchInputForSimpleSearch(searchInput)){
 			this.searchEngine = new SimpleTextSearch();			
 		}else if(isSearchInputForRangeSearch(searchInput)){
 			this.searchEngine = new RangeSearch();
 		}
 		searchEngine.setSearchInput(searchInput);
-		searchEngine.setSearchContent(content);
-		searchEngine.setSearchEngineData(new SearchEngineData());
 	}
 
 	private OutputConfig buildOutputConfig(SearchInput searchInput) {
@@ -64,7 +66,10 @@ public class ConfigurationBuilder implements IConfiguration {
 		if(searchInput.getFileFormat()!=null){
 			outputConfig.setFileFormat(searchInput.getFileFormat());
 		}
-		return null;
+		if(searchInput.getPrefixType() !=null){
+			outputConfig.setFilePrefixType(searchInput.getPrefixType());
+		}
+		return outputConfig;
 	}
 
 	private boolean isSearchInputForRangeSearch(SearchInput searchInput) {
