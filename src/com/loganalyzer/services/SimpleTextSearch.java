@@ -13,10 +13,27 @@ import com.loganalyzer.common.models.SearchInput;
 public class SimpleTextSearch implements ISearcher {
 	private SearchInput input;
 	private SearchContent searchContent;
-	private SearchEngineData searchEngineData;
+	private List<SearchEngineData> searchEngineDataList;
 
-	public SimpleTextSearch(SearchInput searchInput, SearchContent content) {
+	public List<SearchEngineData> getSearchEngineDataList() {
+		return searchEngineDataList;
+	}
+
+	public void setSearchEngineDataList(List<SearchEngineData> searchEngineDataList) {
+		this.searchEngineDataList = searchEngineDataList;
+	}
+
+	public SimpleTextSearch(SearchInput searchInput) {
 		// TODO Auto-generated constructor stub
+		this.input = input;
+	}
+
+	public SearchInput getInput() {
+		return input;
+	}
+
+	public void setInput(SearchInput input) {
+		this.input = input;
 	}
 
 	public SimpleTextSearch() {
@@ -29,17 +46,7 @@ public class SimpleTextSearch implements ISearcher {
 		this.input = input;
 	}
 
-	@Override
-	public void setSearchContent(SearchContent searchContent) {
-		// TODO Auto-generated method stub
-		this.searchContent = searchContent;
-	}
-
-	@Override
-	public SearchContent getSearchContent() {
-		// TODO Auto-generated method stub
-		return this.searchContent;
-	}
+	
 
 	@Override
 	public SearchInput getSearchInput() {
@@ -51,27 +58,29 @@ public class SimpleTextSearch implements ISearcher {
 	public void search() {
 		// TODO Auto-generated method stub
 		//Initialize output content
-		if(searchEngineData == null)
-			searchEngineData = new SearchEngineData();
-		if(searchEngineData.getData() == null){
-			searchEngineData.setData(new ArrayList<StringBuilder>());
-		}
+		searchEngineDataList = new ArrayList<SearchEngineData>();	
 		
 		// get inputstring
 		String searchStr = input.getSearchString();
 		System.out.println("Search Started ....");
-		List<StringBuilder> data = searchEngineData.getData();
 		int lineNo =1;
+		Scanner scanner = null;
 		// take the file
 		for (String fileName : searchContent.getFileList()) {
+			SearchEngineData seData = new SearchEngineData();
+			seData.setData(new ArrayList<StringBuilder>());
+			seData.setHeader(buildHeader());
+			seData.setFooter(buildFooter());
 			try {
 				File file = new File(fileName);				
-				Scanner scanner = new Scanner(file);
+				scanner = new Scanner(file);
+				seData.setFileName(fileName);
+				seData.setSearchStr(searchStr);
 				String line = null;
 				while(scanner.hasNextLine()){
 					line = scanner.nextLine();
 					if(line.contains(searchStr)){
-						data.add(new StringBuilder("[Line " +lineNo+"]"+line));
+						seData.getData().add(new StringBuilder("[Line " +lineNo+"]"+line));
 					}
 				}
 				
@@ -81,21 +90,24 @@ public class SimpleTextSearch implements ISearcher {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			searchEngineDataList.add(seData);
 		}
 		// take the search string
 
 	}
 
-	@Override
-	public SearchEngineData getSearchEngineData() {
+	private String buildFooter() {
 		// TODO Auto-generated method stub
-		return this.searchEngineData;
+		String footer = "Search Result Ends Here";
+		return null;
 	}
 
-	@Override
-	public void setSearchEngineData(SearchEngineData searchEngineData) {
+	private String buildHeader() {
 		// TODO Auto-generated method stub
-		this.searchEngineData = searchEngineData;
+		String header = "Search Result for Search String - "+input.getSearchString();
+		return header;
 	}
+
+	
 
 }

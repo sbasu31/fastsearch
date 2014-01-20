@@ -12,21 +12,24 @@ import com.loganalyzer.services.SimpleTextSearch;
 public class TestSearchWithNoConsole
 {
    public static void main(String[]args){
+	   //take inpputs
+	   //ask for report generation
+	   // in the report generator service, it will take inputs, form config and then call the respective searchengine
+	   
+	   //pass
       SearchInput input = new SearchInput();
-      SearchContent searchContent = new SearchContent();
       input.setDataTypeSearch(DataTypeSearch.NORMAL_TEXT);
       input.setSearchType(SearchType.SIMPLESEARCH);
       input.setSearchArea(SearchArea.FULLFILE);
       input.setSearchString("Property Ignored");
       
-      searchContent.getFileList().add("C:\\Users\\shrutib\\Desktop\\logs\\profiles.hostprofiles.update.txt");
+      input.getFileList().add("C:\\Users\\shrutib\\Desktop\\logs\\profiles.hostprofiles.update.txt");
       ISearcher searchService = new SimpleTextSearch();
-      searchService.setSearchContent(searchContent);
+//      searchService.setSearchContent(searchContent);
       searchService.setSearchInput(input);
-      searchService.setSearchEngineData(new SearchEngineData());
       searchService.search();
       
-      System.out.println(searchService.getSearchEngineData().getData().size());
+      
    }
 
 }

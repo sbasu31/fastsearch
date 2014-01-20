@@ -1,12 +1,14 @@
 package com.loganalyzer.services;
 
+import java.util.List;
+
 import com.loganalyzer.common.models.SearchContent;
 import com.loganalyzer.common.models.SearchEngineData;
 import com.loganalyzer.common.models.SearchInput;
 
 public class RangeSearch implements ISearcher {
 
-	public RangeSearch(SearchInput searchInput, SearchContent content) {
+	public RangeSearch(SearchInput searchInput) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,17 +22,7 @@ public class RangeSearch implements ISearcher {
 
 	}
 
-	@Override
-	public void setSearchContent(SearchContent searchContent) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public SearchContent getSearchContent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public SearchInput getSearchInput() {
@@ -45,13 +37,13 @@ public class RangeSearch implements ISearcher {
 	}
 
 	@Override
-	public SearchEngineData getSearchEngineData() {
+	public List<SearchEngineData> getSearchEngineDataList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setSearchEngineData(SearchEngineData searchEngineData) {
+	public void setSearchEngineDataList(List<SearchEngineData> searchEngineDataList) {
 		// TODO Auto-generated method stub
 
 	}

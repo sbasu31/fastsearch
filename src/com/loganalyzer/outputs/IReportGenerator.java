@@ -14,5 +14,7 @@ public interface IReportGenerator {
 	public void setContent(Map<SearchInput, List<String>> outputData)
 			throws Exception;
 	public void setOutputConfig(OutputConfig outputConfig);
+	public void generatereport() throws Exception;
+	public void setSearchInput(SearchInput input);
 	
 }
