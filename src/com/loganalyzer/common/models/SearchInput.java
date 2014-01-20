@@ -1,5 +1,8 @@
 package com.loganalyzer.common.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.loganalyzer.common.enums.DataTypeSearch;
 import com.loganalyzer.common.enums.FilePrefix;
 import com.loganalyzer.common.enums.OutputFileFormat;
@@ -16,6 +19,15 @@ public class SearchInput
 	private String outputFileLocation;
 	private FilePrefix prefixType;
 	private OutputFileFormat fileFormat;
+	
+	List<String> fileList = new ArrayList<String>();
+	
+	public List<String> getFileList() {
+		return fileList;
+	}
+	public void setFileList(List<String> fileList) {
+		this.fileList = fileList;
+	}
 	public String getOutputFileLocation() {
 		return outputFileLocation;
 	}
