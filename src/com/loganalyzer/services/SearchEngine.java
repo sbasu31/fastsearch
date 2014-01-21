@@ -34,10 +34,12 @@ public class SearchEngine implements ISearchEngine{
 		searcher.search();
 		List<SearchEngineData>seDataList = searcher.getSearchEngineDataList();	     
 		IReportGenerator reportGen = config.getReportGenerator();
+		reportGen.setSearchResult(seDataList);
 		reportGen.generatereport();
 		
 		
-		return null;
+		
+		return "success";
 	}
 
 }

@@ -66,7 +66,7 @@ public class SimpleTextSearch implements ISearcher {
 		int lineNo =1;
 		Scanner scanner = null;
 		// take the file
-		for (String fileName : searchContent.getFileList()) {
+		for (String fileName : input.getFileList()) {
 			SearchEngineData seData = new SearchEngineData();
 			seData.setData(new ArrayList<StringBuilder>());
 			seData.setHeader(buildHeader());

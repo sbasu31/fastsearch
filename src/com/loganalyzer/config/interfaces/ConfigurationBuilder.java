@@ -1,10 +1,8 @@
 package com.loganalyzer.config.interfaces;
 
-import com.loganalyzer.common.enums.FilePrefix;
 import com.loganalyzer.common.enums.OutputFileFormat;
+import com.loganalyzer.common.enums.SearchType;
 import com.loganalyzer.common.models.OutputConfig;
-import com.loganalyzer.common.models.SearchContent;
-import com.loganalyzer.common.models.SearchEngineData;
 import com.loganalyzer.common.models.SearchInput;
 import com.loganalyzer.outputs.IOutputRepository;
 import com.loganalyzer.outputs.IReportGenerator;
@@ -27,6 +25,7 @@ public class ConfigurationBuilder implements IConfiguration {
 		else if(isSearchInputForRangeSearch(searchInput)){
 			searchEngine = new RangeSearch(searchInput);
 		}
+		searchEngine.setSearchInput(searchInput);
 		OutputConfig outputConfig = buildOutputConfig(searchInput);
 		buildReportGenerator(searchInput,outputConfig);
 		
@@ -74,23 +73,29 @@ public class ConfigurationBuilder implements IConfiguration {
 
 	private boolean isSearchInputForRangeSearch(SearchInput searchInput) {
 		// TODO Auto-generated method stub
-		return false;
+		if(searchInput.getSearchType().equals(SearchType.RANGE_SEARCH))
+		return true;
+		else 
+			return false;
 	}
 
 	private boolean isSearchInputForSimpleSearch(SearchInput searchInput) {
-		return false;
+		if(searchInput.getSearchType().equals(SearchType.SIMPLESEARCH))
+		return true;
+		else
+			return false;
 	}
 
 	@Override
 	public ISearcher getSearchEngine() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.searchEngine;
 	}
 
 	@Override
 	public IReportGenerator getReportGenerator() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return this.reportGenerator;
 	}
 
 	@Override

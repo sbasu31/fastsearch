@@ -12,7 +12,7 @@ public interface IReportGenerator {
 
 	public void setFooter(String footer) throws Exception;
 
-	public void setContent(List<SearchEngineData>outputData)
+	public void setSearchResult(List<SearchEngineData>outputData)
 			throws Exception;
 	public void setOutputConfig(OutputConfig outputConfig);
 	public void generatereport() throws Exception;
