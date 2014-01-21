@@ -13,15 +13,15 @@ import com.loganalyzer.common.models.SearchInput;
 public class TextfileGenerator implements IReportGenerator{
 	private OutputConfig outputConfig = null;
 	private SearchInput input =null;
-	private List<SearchEngineData> searchReslt;
+	private List<SearchEngineData> searchResult;
 	
 
-	public List<SearchEngineData> getSearchReslt() {
-		return searchReslt;
+	public List<SearchEngineData> getSearchResult() {
+		return searchResult;
 	}
 
-	public void setSearchReslt(List<SearchEngineData> searchReslt) {
-		this.searchReslt = searchReslt;
+	public void setSearchResult(List<SearchEngineData> searchResult) {
+		this.searchResult = searchResult;
 	}
 
 	@Override
@@ -48,8 +48,9 @@ public class TextfileGenerator implements IReportGenerator{
 		// TODO Auto-generated method stub
 		String fileLoction = outputConfig.getOutputFileLocation();
 		int fileIndex = 1;
-		for(SearchEngineData seData : searchReslt ){
-			PrintWriter writer = new PrintWriter(fileLoction+"\the-file-name-"+fileIndex+".txt", "UTF-8");
+		for(SearchEngineData seData : searchResult ){
+			PrintWriter writer = new PrintWriter(fileLoction.trim()+"\\the-file-name-"+fileIndex+".txt", "UTF-8");
+			
 			writer.println("Start of Generate Report\n\n\n ");
 			List<StringBuilder> dataList = seData.getData();
 			writer.println(seData.getHeader());
@@ -66,13 +67,8 @@ public class TextfileGenerator implements IReportGenerator{
 	@Override
 	public void setSearchInput(SearchInput input) {
 		// TODO Auto-generated method stub
-		
+		this.setSearchInput(input);
 	}
 
-	@Override
-	public void setContent(List<SearchEngineData> outputData) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }
