@@ -62,7 +62,7 @@ public class SimpleTextSearch implements ISearcher {
 		
 		// get inputstring
 		String searchStr = input.getSearchString();
-		System.out.println("Search Started ....");
+		System.out.println("Search Started for search string : ...."+searchStr);
 		int lineNo =1;
 		Scanner scanner = null;
 		// take the file
