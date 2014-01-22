@@ -109,7 +109,7 @@ public class SearchInput
 			return false;
 		return true;
 	}
-	private SearchType searchType;
+	private SearchType searchType; // This is about the searchType, whether it is simple search or range search
 	private String searchString;
 	private String searchRangeStart;
 	private String searchRangeEnd;

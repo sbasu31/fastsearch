@@ -8,7 +8,7 @@ import com.loganalyzer.outputs.IOutputRepository;
 import com.loganalyzer.outputs.IReportGenerator;
 import com.loganalyzer.outputs.TextfileGenerator;
 import com.loganalyzer.services.ISearcher;
-import com.loganalyzer.services.RangeSearch;
+import com.loganalyzer.services.RangeSearchInFullFile;
 import com.loganalyzer.services.SimpleTextSearch;
 
 public class ConfigurationBuilder implements IConfiguration {
@@ -23,7 +23,7 @@ public class ConfigurationBuilder implements IConfiguration {
 			searchEngine = new SimpleTextSearch(searchInput);
 		}
 		else if(isSearchInputForRangeSearch(searchInput)){
-			searchEngine = new RangeSearch(searchInput);
+			searchEngine = new RangeSearchInFullFile(searchInput);
 		}
 		searchEngine.setSearchInput(searchInput);
 		OutputConfig outputConfig = buildOutputConfig(searchInput);
@@ -47,7 +47,7 @@ public class ConfigurationBuilder implements IConfiguration {
 		if(isSearchInputForSimpleSearch(searchInput)){
 			this.searchEngine = new SimpleTextSearch();			
 		}else if(isSearchInputForRangeSearch(searchInput)){
-			this.searchEngine = new RangeSearch();
+			this.searchEngine = new RangeSearchInFullFile();
 		}
 		searchEngine.setSearchInput(searchInput);
 	}
