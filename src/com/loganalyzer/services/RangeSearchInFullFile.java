@@ -1,6 +1,7 @@
 package com.loganalyzer.services;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,9 +75,23 @@ public class RangeSearchInFullFile implements ISearcher {
 			try {
 				RandomAccessFile raf = new RandomAccessFile(fileName,"r");
 				String line = null;
+				int maxLine = (int) raf.length();
+				while(true){
+					//search for the first string
+					//get the line number
+					// start appending it to string buffer list till u get range last string
+					line = raf.readLine();
+					if(line == null)
+						break;
+					else{
+						if(line.contains(input.getSearchRangeStart())){
+							
+						}
+					}
+				}
 //				while(raf.readLine())
 //				String line = raf.readLine()
-			} catch (FileNotFoundException e) {
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
