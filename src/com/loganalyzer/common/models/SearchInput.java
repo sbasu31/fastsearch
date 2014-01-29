@@ -39,10 +39,10 @@ public class SearchInput
 				+ ((searchAreaRangeStart == null) ? 0 : searchAreaRangeStart
 						.hashCode());
 		result = prime * result
-				+ ((searchRangeEnd == null) ? 0 : searchRangeEnd.hashCode());
+				+ ((searchStringEnd == null) ? 0 : searchStringEnd.hashCode());
 		result = prime
 				* result
-				+ ((searchRangeStart == null) ? 0 : searchRangeStart.hashCode());
+				+ ((searchStringStart == null) ? 0 : searchStringStart.hashCode());
 		result = prime * result
 				+ ((searchRangeType == null) ? 0 : searchRangeType.hashCode());
 		result = prime * result
@@ -88,15 +88,15 @@ public class SearchInput
 				return false;
 		} else if (!searchAreaRangeStart.equals(other.searchAreaRangeStart))
 			return false;
-		if (searchRangeEnd == null) {
-			if (other.searchRangeEnd != null)
+		if (searchStringEnd == null) {
+			if (other.searchStringEnd != null)
 				return false;
-		} else if (!searchRangeEnd.equals(other.searchRangeEnd))
+		} else if (!searchStringEnd.equals(other.searchStringEnd))
 			return false;
-		if (searchRangeStart == null) {
-			if (other.searchRangeStart != null)
+		if (searchStringStart == null) {
+			if (other.searchStringStart != null)
 				return false;
-		} else if (!searchRangeStart.equals(other.searchRangeStart))
+		} else if (!searchStringStart.equals(other.searchStringStart))
 			return false;
 		if (searchRangeType != other.searchRangeType)
 			return false;
@@ -111,8 +111,8 @@ public class SearchInput
 	}
 	private SearchType searchType; // This is about the searchType, whether it is simple search or range search
 	private String searchString;
-	private String searchRangeStart;
-	private String searchRangeEnd;
+	private String searchStringStart;
+	private String searchStringEnd;
 	private String outputFileLocation;
 	private FilePrefix prefixType;
 	private OutputFileFormat fileFormat;
@@ -145,19 +145,19 @@ public class SearchInput
 	}
 	public String getSearchRangeStart()
    {
-      return searchRangeStart;
+      return searchStringStart;
    }
    public void setSearchRangeStart(String searchRangeStart)
    {
-      this.searchRangeStart = searchRangeStart;
+      this.searchStringStart = searchRangeStart;
    }
    public String getSearchRangeEnd()
    {
-      return searchRangeEnd;
+      return searchStringEnd;
    }
    public void setSearchRangeEnd(String searchRangeEnd)
    {
-      this.searchRangeEnd = searchRangeEnd;
+      this.searchStringEnd = searchRangeEnd;
    }
    private SearchArea searchArea;  
 	private String searchAreaRangeStart;
@@ -196,8 +196,8 @@ public class SearchInput
    public String toString()
    {
       return "SearchInput [searchType=" + searchType + ", searchString="
-               + searchString + ", searchRangeStart=" + searchRangeStart
-               + ", searchRangeEnd=" + searchRangeEnd + ", searchArea="
+               + searchString + ", searchRangeStart=" + searchStringStart
+               + ", searchRangeEnd=" + searchStringEnd + ", searchArea="
                + searchArea + ", searchAreaRangeStart=" + searchAreaRangeStart
                + ", searchAreaRangeEnd=" + searchAreaRangeEnd
                + ", searchRangeType=" + searchRangeType + ", dataTypeSearch="
