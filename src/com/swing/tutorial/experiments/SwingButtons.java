@@ -43,6 +43,7 @@ public class SwingButtons extends JFrame{
 		
 		panel.add(beep);
 		panel.add(close);
+		
 	}
 	
 	public static void main(String[] args){
